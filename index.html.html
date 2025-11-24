@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หจก.พระแสงโฆษณา | รับทำป้ายครบวงจร</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --yellow: #FFD600; /* สีเหลืองก่อสร้าง */
+            --black: #0a0a0a;
+            --dark-gray: #1f1f1f;
+            --white: #ffffff;
+            --red-alert: #FF0000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Kanit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Kanit', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .eng-font { font-family: 'Oswald', sans-serif; }
+        .section { padding: 80px 5%; }
+        
+        /* --- BUTTONS & SKEW EFFECT --- */
+        .btn-skew {
+            display: inline-block; background: var(--yellow); color: var(--black);
+            padding: 12px 30px; font-weight: 700; font-size: 1.1rem;
+            transform: skew(-20deg); transition: 0.3s; border: 2px solid var(--yellow);
+        }
+        .btn-skew span { display: block; transform: skew(20deg); }
+        .btn-skew:hover { background: transparent; color: var(--yellow); box-shadow: 0 0 15px rgba(255, 214, 0, 0.3); }
+
+        /* --- LOGO & RGB ANIMATION --- */
+        @keyframes rgbFlow {
+            0% { text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000; color: #fff; }
+            25% { text-shadow: 0 0 5px #ffff00, 0 0 15px #ffff00; color: #fff; }
+            50% { text-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00; color: #fff; }
+            75% { text-shadow: 0 0 5px #0000ff, 0 0 15px #0000ff; color: #fff; }
+            100% { text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000; color: #fff; }
+        }
+        .rgb-text { font-weight: 800; letter-spacing: 1px; animation: rgbFlow 3s linear infinite; }
+        .tiger-glow { color: var(--yellow); font-size: 2rem; margin-right: 10px; filter: drop-shadow(0 0 8px var(--yellow)); transition: 0.3s; }
+
+        /* --- HEADER & NAVIGATION ENHANCEMENT --- */
+        header {
+            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid var(--yellow);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 1.6rem; color: var(--white); display: flex; align-items: center; text-decoration: none; }
+        
+        /* 🛠️ ENHANCED NAVIGATION STYLES */
+        .nav-menu { display: flex; gap: 30px; align-items: center; } 
+        
+        .nav-menu a {
+            font-weight: 700;
+            font-size: 1.15rem;
+            padding: 5px 0;
+            position: relative;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:not(:last-child)::after {
+            content: "|";
+            position: absolute;
+            right: -17px; 
+            color: #555; 
+            font-weight: 300;
+        }
+        
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px; 
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--yellow);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--yellow); 
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        /* Mobile Menu Icon */
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 2rem;
+            color: var(--yellow);
+            cursor: pointer;
+        }
+        /* END ENHANCED NAVIGATION STYLES */
+
+
+        /* --- HERO --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.5) 100%), 
+                        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2089&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; padding: 0 5%; margin-top: 80px;
+        }
+        .hero-content { max-width: 650px; }
+        .hero h1 { font-size: 4rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero h1 span { color: var(--yellow); display: inline-block; }
+        .hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; border-left: 4px solid var(--yellow); padding-left: 20px; }
+
+        /* --- PROMOTION SECTION --- */
+        @keyframes pulse { 0% { transform: skew(10deg) scale(1); } 50% { transform: skew(10deg) scale(1.1); } 100% { transform: skew(10deg) scale(1); } }
+        .promo-section {
+            background-color: #111; background-image: repeating-linear-gradient(45deg, #111, #111 10px, #1a1a1a 10px, #1a1a1a 20px);
+            padding: 60px 5%; border-bottom: 2px solid var(--yellow);
+        }
+        .promo-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .promo-card { background: var(--black); border: 2px solid var(--yellow); padding: 30px; width: 100%; max-width: 500px; position: relative; transform: skew(-10deg); box-shadow: 0 0 20px rgba(0,0,0,0.5); transition: 0.3s; }
+        .promo-card:hover { transform: skew(-10deg) translateY(-5px); box-shadow: 0 0 30px rgba(255, 214, 0, 0.2); }
+        .promo-content { transform: skew(10deg); text-align: left; display: flex; align-items: center; gap: 20px; }
+        .promo-icon { font-size: 3rem; color: var(--yellow); }
+        .promo-badge {
+            position: absolute; top: -15px; right: -10px; background: var(--red-alert); color: #fff;
+            padding: 5px 15px; font-weight: 800; font-size: 1.2rem; transform: skew(10deg); box-shadow: 0 0 10px rgba(255,0,0,0.5);
+            animation: pulse 1s infinite;
+        }
+
+        /* --- PORTFOLIO --- */
+        .section-title { margin-bottom: 50px; display: flex; align-items: center; gap: 20px; }
+        .section-title h2 { font-size: 2.5rem; white-space: nowrap; }
+        .line { flex: 1; height: 2px; background: #333; }
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 15px; grid-auto-flow: dense; }
+        .bento-item { position: relative; overflow: hidden; border: 1px solid #333; background: #111; }
+        .bento-item.large { grid-column: span 2; grid-row: span 2; }
+        
+        /* 🛠️ Image Sizing Fix for Bento Items */
+        .bento-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* 🔴 FIX: Ensures image covers the area without distorting */
+            transition: 0.5s; 
+            filter: grayscale(100%); 
+        }
+
+        .bento-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        .bento-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, var(--black)); padding: 15px; transform: translateY(100%); transition: 0.3s; }
+        .bento-item:hover .bento-overlay { transform: translateY(0); }
+        .bento-overlay h4 { color: var(--yellow); font-size: 1.2rem; margin-bottom: 3px; }
+
+        /* --- ROYAL POPUP STYLES --- */
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .popup-content {
+            background-color: #111; padding: 10px; border: 4px solid #FFD700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); text-align: center; max-width: 90%; width: 500px; border-radius: 8px; position: relative;
+        }
+        .popup-content img { width: 100%; height: auto; display: block; }
+        .popup-text { margin-top: 15px; color: var(--white); }
+        .popup-text h2 { color: #FFD700; font-family: 'Kanit', sans-serif; font-size: 2rem; margin-bottom: 10px; text-shadow: 1px 1px 2px #000; }
+        
+        /* Popup Actions Layout */
+        .popup-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; margin-bottom: 10px; }
+        .btn-popup { font-family: 'Kanit', sans-serif; font-size: 1rem; font-weight: bold; padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.2s; text-decoration: none; border: none; }
+        .btn-sign { background: var(--white); color: var(--black); }
+        .btn-bio { background: transparent; color: var(--white); border: 1px solid var(--white); }
+        .btn-enter { background: #444; color: var(--white); }
+        
+        .btn-sign:hover { background: #eee; }
+        .btn-bio:hover { background: var(--white); color: var(--black); }
+        .btn-enter:hover { background: #666; }
+
+        /* --- CONTACT & FOOTER --- */
+        #contact { background: var(--yellow); color: var(--black); padding: 80px 5%; text-align: center; }
+        footer { background: #111; border-top: 5px solid var(--yellow); padding: 60px 5%; margin-top: 50px; }
+        .footer-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            .hero h1 { font-size: 3rem; }
+            .bento-grid { display: flex; flex-direction: column; }
+            .bento-item { height: 250px; }
+            
+            .nav-menu { /* Mobile Navigation Overlay (Hidden off-screen initially) */
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 70%;
+                height: 100%;
+                background-color: var(--dark-gray);
+                flex-direction: column;
+                justify-content: center;
+                gap: 25px;
+                transition: left 0.3s ease-in-out;
+                z-index: 999;
+                border-right: 2px solid var(--yellow);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+            }
+            .nav-menu.active {
+                left: 0; /* Show menu */
+            }
+            .nav-menu a {
+                font-size: 1.5rem;
+                padding: 10px 0;
+                width: fit-content;
+            }
+            .nav-menu a:not(:last-child)::after { display: none; } /* Hide separator on mobile */
+            .btn-skew { display: none; } /* Hide "ขอใบเสนอราคา" button on mobile header */
+            .menu-toggle { display: block; } /* Show burger icon on mobile */
+
+            .promo-content { flex-direction: column; text-align: center; }
+            .popup-actions { flex-direction: column; }
+            .popup-actions .btn-popup { width: 90%; max-width: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="royalPopup" class="popup-overlay">
+        <div class="popup-content">
+            <img src="file:///C:/Users/TNC/Downloads/571155691_1453038843491368_3291132509998163159_n-ezgif.com-jpg-to-webp-converter.webp" alt="ภาพพระบรมฉายาลักษณ์">
+            
+            <div class="popup-text">
+                <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ<br>ข้าพระพุทธเจ้า หจก.พระแสงโฆษณา</p>
+                
+                <div class="popup-actions">
+                    
+                    <a href="https://royaltribute.mdes.go.th/" target="_blank" class="btn-popup btn-sign">ลงนามถวายพระพร</a>
+                    
+                    <button class="btn-popup btn-enter" onclick="closePopup()">เข้าสู่เว็บไซต์</button>
+					
+					<a href="https://www.royaloffice.th/25/10/2025/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4-12-08-2566/" target="_blank" class="btn-popup btn-sign">พระราชประวัติ</a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-tiger tiger-glow"></i>
+            <span class="rgb-text">หจก.พระแสงโฆษณา</span>
+        </a>
+        <nav class="nav-menu" id="mobileMenu">
+            <a href="#portfolio" onclick="closeMobileMenu()">ผลงานของเรา</a>
+            <a href="#services" onclick="closeMobileMenu()">บริการ</a>
+            <a href="#contact" onclick="closeMobileMenu()">ติดต่อ</a>
+        </nav>
+        
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <a href="#contact" class="btn-skew" style="font-size: 1rem; padding: 8px 20px;">
+            <span>ขอใบเสนอราคา</span>
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="eng-font" style="color:var(--yellow); font-size:1.2rem;">PRASANG KOSANA</p>
+            <h1>รับทำป้ายโฆษณา <br> <span>ครบวงจร ทุกรูปแบบ</span></h1>
+            <p>
+                งานเล็ก งานใหญ่ เราใส่ใจทุกรายละเอียด โครงสร้างเหล็กได้มาตรฐานแข็งแรง
+                ป้ายไฟสวยงามทนทาน โฟมบอร์ด ป้ายถือ และงานพิมพ์คุณภาพสูง
+            </p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#portfolio" class="btn-skew"><span>ดูผลงานจริง</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="promo-section">
+        <div class="section-title" style="justify-content: center; margin-bottom: 40px;">
+            <h2 style="color: #fff;">SPECIAL <span style="color: var(--yellow);">OFFER</span></h2>
+        </div>
+        
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="promo-badge">ฟรี!!</div>
+                <div class="promo-content">
+                    <div class="promo-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <div>
+                        <h3 style="color: var(--yellow); margin-bottom: 5px; font-size: 1.5rem;">แบบจำลอง 3D</h3>
+                        <p style="color: #ddd;">ปรึกษาเราวันนี้ ออกแบบให้เห็นภาพจริงก่อนผลิต ไม่ต้องลุ้น งานตรงปกแน่นอน</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-card">
+                <div class="promo-badge">ฟรี!!</div>
+                <div class="promo-content">
+                    <div class="promo-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <div>
+                        <h3 style="color: var(--yellow); margin-bottom: 5px; font-size: 1.5rem;">ดูหน้างาน & ติดตั้ง</h3>
+                        <p style="color: #ddd;">ทีมงานลงสำรวจพื้นที่จริงวัดขนาดเป๊ะ พร้อมบริการติดตั้งฟรี (ในเขตพื้นที่ให้บริการ)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="section-title">
+            <h2>ผลงานของเรา (PORTFOLIO)</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-item large"><img src="https://images.unsplash.com/photo-1565514020175-0c2235ae26b3?q=80&w=2070&auto=format&fit=crop" alt="ป้ายทาวเวอร์"><div class="bento-overlay"><h4>ป้ายทาวเวอร์ปั๊มน้ำมัน</h4><p>งานโครงสร้างเหล็กสูง 15 เมตร</p></div></div>
+            <div class="bento-item wide"><img src="https://images.unsplash.com/photo-1563245372-f21720e32c4d?q=80&w=2070&auto=format&fit=crop" alt="ป้ายไฟตัวอักษร"><div class="bento-overlay"><h4>ป้ายไฟตัวอักษรโลหะ</h4><p>อักษรซ่อนไฟหลัง (Backlit)</p></div></div>
+            <div class="bento-item"><img src="https://i.postimg.cc/6Q4GCb19/1710.jpg" alt="Neon Sign"><div class="bento-overlay"><h4>ป้าย NEON FLEX</h4><p>ดัดตามแบบ ตกแต่งภายใน</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1615900119312-2acd3a71f3ad?q=80&w=2070&auto=format&fit=crop" alt="Car Wrap"><div class="bento-overlay"><h4>CAR WRAP</h4><p>สติ๊กเกอร์โฆษณาติดรถยนต์</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" alt="Office Sign"><div class="bento-overlay"><h4>ป้ายบริษัท</h4><p>สแตนเลสกัดกรด / อะคริลิค</p></div></div>
+            <div class="bento-item tall"><img src="https://images.unsplash.com/photo-1582560475093-4537a7bd465d?q=80&w=2069&auto=format&fit=crop" alt="Billboard"><div class="bento-overlay"><h4>BILLBOARD</h4><p>ป้ายโฆษณาข้างทางหลวง</p></div></div>
+            <div class="bento-item"><img src="https://i.postimg.cc/MK05QHfB/571264855-1451000590361860-7358444878663415603-n.jpg" alt="CNC Laser"><div class="bento-overlay"><h4>งานตัด CNC / LASER</h4><p>ฉลุลายพลาสวูดและโลหะ</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1552084117-56a987666449?q=80&w=2070&auto=format&fit=crop" alt="Lightbox"><div class="bento-overlay"><h4>ตู้ไฟ LIGHTBOX</h4><p>ป้ายกล่องไฟหน้าเรียบ</p></div></div>
+            <div class="bento-item wide"><img src="https://plus.unsplash.com/premium_photo-1664303847960-586318f59035?q=80&w=1974&auto=format&fit=crop" alt="Safety Sign"><div class="bento-overlay"><h4>ป้ายจราจร & ความปลอดภัย</h4><p>ป้ายสะท้อนแสงมาตรฐานกรมทางหลวง</p></div></div>
+            <div class="bento-item wide"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=2070&auto=format&fit=crop" alt="Vinyl Banner"><div class="bento-overlay"><h4>ป้ายไวนิลโฆษณา</h4><p>สีสด คมชัด ทนแดด</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2070&auto=format&fit=crop" alt="Menu Board"><div class="bento-overlay"><h4>ป้ายเมนู & ตกแต่งร้าน</h4><p>ออกแบบสวยงาม เพิ่มยอดขาย</p></div></div>
+            <div class="bento-item tall"><img src="https://images.unsplash.com/photo-1598128558393-70ff21433be0?q=80&w=1978&auto=format&fit=crop" alt="Standee"><div class="bento-overlay"><h4>STANDEE / X-FRAME</h4><p>ป้ายตั้งพื้น น้ำหนักเบา</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1621644868560-6b3a36275813?q=80&w=2070&auto=format&fit=crop" alt="Directional Sign"><div class="bento-overlay"><h4>ป้ายบอกทาง</h4><p>Directory Sign ภายในอาคาร</p></div></div>
+            <div class="bento-item"><img src="https://images.unsplash.com/photo-1616400619175-5beda3a17896?q=80&w=2070&auto=format&fit=crop" alt="Product Label"><div class="bento-overlay"><h4>ฉลากสินค้า</h4><p>สติ๊กเกอร์กันน้ำ ไดคัทพร้อมใช้</p></div></div>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: #151515;">
+        <div class="section-title">
+            <h2>บริการที่เราเชี่ยวชาญ</h2>
+            <div class="line"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center; padding: 20px; border: 1px solid #333;">
+                <i class="fa-solid fa-layer-group" style="font-size: 3rem; color: var(--yellow);"></i>
+                <h3>ออกแบบและผลิต</h3>
+                <p style="color: #aaa;">บริการออกแบบกราฟิกและขึ้นรูปชิ้นงานตามความต้องการ</p>
+            </div>
+            <div style="text-align: center; padding: 20px; border: 1px solid #333;">
+                <i class="fa-solid fa-print" style="font-size: 3rem; color: var(--yellow);"></i>
+                <h3>งานพิมพ์ดิจิตอล</h3>
+                <p style="color: #aaa;">เครื่องพิมพ์ Inkjet Outdoor ที่มีความละเอียดสูง สีสันสด คมชัด ระดับ 4K</p>
+            </div>
+            <div style="text-align: center; padding: 20px; border: 1px solid #333;">
+                <i class="fa-solid fa-screwdriver-wrench" style="font-size: 3rem; color: var(--yellow);"></i>
+                <h3>ติดตั้งและซ่อมบำรุง</h3>
+                <p style="color: #aaa;">ทีมช่างชำนาญการ มีประสบการณ์ บริการติดตั้งและดูแลหลังการขาย</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">สร้างภาพลักษณ์ธุรกิจให้โดดเด่น</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 40px; font-weight: 500;">
+            ปรึกษาเราวันนี้ รับแบบจำลอง 3D ก่อนผลิตจริง
+        </p>
+        
+        <a href="https://line.me/ti/p/CpFp5QJngy" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: var(--black); color: var(--yellow); padding: 15px 50px; font-weight: bold; font-size: 1.5rem; border-radius: 5px; text-decoration: none;">
+            <i class="fa-brands fa-line" style="font-size: 2rem;"></i>
+            <span>LINE: @kosana</span>
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-flex">
+            <div>
+                <h3>หจก.พระแสงโฆษณา</h3>
+                <p style="color: #888; margin-top: 10px;">รับทำป้ายพระแสง จังหวัดสุราษฎร์ธานี และพื้นที่ใกล้เคียง</p>
+            </div>
+            <div>
+                <h4 style="color: #fff; margin-bottom: 20px;">ติดต่อเรา</h4>
+                <ul style="color: #888; line-height: 2;">
+                    <li><i class="fa-solid fa-phone" style="color: var(--yellow);"></i> 097-9878-936</li>
+                    <li><i class="fa-brands fa-line" style="color: var(--yellow);"></i> @PhrasaengSign</li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com/yourpage" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://tiktok.com/@yourpage" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div style="text-align: center; color: #555; margin-top: 50px; font-size: 0.9rem;">
+            &copy; 2025 หจก.พระแสงโฆษณา.
+        </div>
+    </footer>
+
+    <script>
+        function closePopup() {
+            // ซ่อนหน้าต่าง Popup
+            document.getElementById('royalPopup').style.display = 'none';
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
